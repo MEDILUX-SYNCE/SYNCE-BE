@@ -1,11 +1,14 @@
 const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT;
 
 app.get('/', (req, res) => {
   res.send('Hello, SYNCE-BE!');
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
