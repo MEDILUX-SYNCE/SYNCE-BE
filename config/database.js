@@ -18,3 +18,15 @@ const sequelize = new Sequelize(
 );
 
 module.exports = sequelize;
+
+// 연결 테스트 
+const testConnection = async() => {
+  try {
+    await sequelize.authenticate();
+    console.log('Sequelize 데이터베이스 연결 성공');
+  } catch (error) {
+    console.error('Sequelize 연결 실패: ', error.message);
+  }
+};
+
+testConnection();
