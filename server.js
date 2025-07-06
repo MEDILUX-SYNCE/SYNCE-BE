@@ -1,4 +1,7 @@
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const { specs } = require('./swagger/swagger');
+
 const cors = require('cors');
 require('dotenv').config();
 
@@ -9,6 +12,9 @@ const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+app.use('/', require('./routes/index'));
 
 
 app.listen(PORT, () => {
