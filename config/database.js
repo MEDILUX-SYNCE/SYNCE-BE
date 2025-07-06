@@ -19,7 +19,6 @@ const sequelize = new Sequelize(
 
 module.exports = sequelize;
 
-// 연결 테스트 
 const testConnection = async() => {
   try {
     await sequelize.authenticate();
