@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const userModel = require('../models/schemas/user');
+const User = require('../models/schemas/user');
 
 const verifyToken = async (req, res, next) => {
     try {
@@ -13,7 +13,7 @@ const verifyToken = async (req, res, next) => {
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await userModel.findById(decoded.user_id);
+        const user = await User.findByPk(decoded.user_id);
 
         if (!user || user.state !== 'ACTIVE') {
             return res.stauts(401).json({
