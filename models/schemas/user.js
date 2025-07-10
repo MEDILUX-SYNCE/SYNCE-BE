@@ -11,11 +11,7 @@ class User extends Model {
       email: {
         type: DataTypes.STRING(100),
         unique: true,
-        allowNull: true, // Apple 로그인 시 NULL 가능
-      },
-      password: {
-        type: DataTypes.STRING(255),
-        allowNull: true, // Apple 로그인 시 NULL 가능
+        allowNull: false,
       },
       user_name: {
         type: DataTypes.STRING(100),
@@ -38,10 +34,15 @@ class User extends Model {
         defaultValue: 'ACTIVE',
       },
       login_type: {
-        type: DataTypes.ENUM('APPLE', 'EMAIL'),
-        defaultValue: 'EMAIL',
+        type: DataTypes.ENUM('APPLE', 'GOOGLE'),
+        allowNull: false,
       },
       apple_user_id: {
+        type: DataTypes.STRING(255),
+        unique: true,
+        allowNull: true,
+      },
+      kakao_user_id: {
         type: DataTypes.STRING(255),
         unique: true,
         allowNull: true,
@@ -115,10 +116,6 @@ class User extends Model {
     });
     this.hasMany(models.AdminAction, {
       as: 'admin_action',
-      foreignKey: 'user_id'
-    });
-    this.hasMany(models.UserActivity, {
-      as: 'user_activities',
       foreignKey: 'user_id'
     });
     this.hasMany(models.Notification, {

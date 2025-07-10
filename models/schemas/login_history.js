@@ -16,6 +16,10 @@ class LoginHistory extends Model {
         type: DataTypes.ENUM('MOBILE', 'TABLET', 'PC'), 
         allowNull: false 
       },
+      social_type: {
+        type: DataTypes.ENUM('APPLE', 'GOOGLE'),
+        allowNull: false
+      },
       platform: { 
         type: DataTypes.STRING(100), 
         allowNull: true 

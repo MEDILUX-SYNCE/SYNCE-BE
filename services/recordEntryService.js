@@ -1,6 +1,5 @@
 const { RecordEntry, RecordImage } = require('../models');
 
-
 // 회복 기록 생성
 exports.createRecordEntry = async (recordBookId, { date, symptom, diary, images }) => {
   const entry = await RecordEntry.create({
