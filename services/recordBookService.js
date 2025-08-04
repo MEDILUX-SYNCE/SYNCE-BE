@@ -30,14 +30,17 @@ exports.createRecordBook = async ({ user_id, title, hospital_id, surgery_date, s
 
 // 기록장 목록 조회
 exports.getRecordBooks = async ({ user_id, page = 1, limit = 10, sort = 'created_at' }) => {
-  const offset = (page - 1) * limit;
+  const numericPage = Number(page);
+  const numericLimit = Number(limit);
+  const offset = (numericPage - 1) * numericLimit;
+
   const { count, rows } = await RecordBook.findAndCountAll({
     where: { user_id },
     include: [
       { model: Hospital, as: 'hospital', attributes: ['name'] }
     ],
     order: [[sort, 'DESC']],
-    limit,
+    limit: numericLimit,
     offset
   });
 
@@ -49,7 +52,7 @@ exports.getRecordBooks = async ({ user_id, page = 1, limit = 10, sort = 'created
       surgery_date: rb.surgery_date,
       created_at: rb.created_at
     })),
-    pagination: { page: Number(page), limit: Number(limit), total: count }
+    pagination: { page: numericPage, limit: numericLimit, total: count }
   };
 };
 

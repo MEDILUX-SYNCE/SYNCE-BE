@@ -41,7 +41,7 @@ const { verifyToken } = require('../middlewares/authMiddleware');
  *                 type: array
  *                 items:
  *                   type: integer
- *                 example: [3, 4]
+ *                 example: 1
  *     responses:
  *       201:
  *         description: 기록장 생성 성공
@@ -57,7 +57,7 @@ const { verifyToken } = require('../middlewares/authMiddleware');
  *                   type: string
  *                   example: 2025년 코성형 기록
  */
-router.post('/', recordBookController.createRecordBook);
+router.post('/', verifyToken, recordBookController.createRecordBook);
 
 /**
  * @swagger
