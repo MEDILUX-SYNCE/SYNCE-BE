@@ -14,8 +14,10 @@ const verifyToken = async (req, res, next) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const user = await User.findByPk(decoded.user_id);
 
+        console.log(user); // null 로 나온다... 
+
         if (!user || user.state !== 'ACTIVE') {
-            return res.stauts(401).json({
+            return res.status(401).json({
                 success: false,
                 error: { code: 'AUTH_002', message: '유효하지 않은 사용자입니다.'}
             });
