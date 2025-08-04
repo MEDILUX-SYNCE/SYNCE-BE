@@ -42,11 +42,6 @@ class User extends Model {
         unique: true,
         allowNull: true,
       },
-      kakao_user_id: {
-        type: DataTypes.STRING(255),
-        unique: true,
-        allowNull: true,
-      },
       created_at: {
         type: DataTypes.DATE,
         allowNull: false,
