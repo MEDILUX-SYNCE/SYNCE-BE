@@ -10,7 +10,10 @@ class LoginHistory extends Model {
       },
       user_id: { 
         type: DataTypes.INTEGER,
-        references: { model: 'users', key: 'user_id' }
+        allowNull: true,
+        references: { model: 'users', key: 'user_id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       device_type: { 
         type: DataTypes.ENUM('MOBILE', 'TABLET', 'PC'), 
@@ -18,7 +21,7 @@ class LoginHistory extends Model {
       },
       social_type: {
         type: DataTypes.ENUM('APPLE', 'GOOGLE'),
-        allowNull: false
+        allowNull: true
       },
       platform: { 
         type: DataTypes.STRING(100), 
