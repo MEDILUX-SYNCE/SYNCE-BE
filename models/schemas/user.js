@@ -32,6 +32,7 @@ class User extends Model {
       state: {
         type: DataTypes.ENUM('ACTIVE', 'WITHDRAWN'),
         defaultValue: 'ACTIVE',
+        allowNull: true,
       },
       login_type: {
         type: DataTypes.ENUM('APPLE', 'GOOGLE'),
@@ -41,6 +42,11 @@ class User extends Model {
         type: DataTypes.STRING(255),
         unique: true,
         allowNull: true,
+      },
+      google_user_id: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
+        unique: true,
       },
       created_at: {
         type: DataTypes.DATE,
