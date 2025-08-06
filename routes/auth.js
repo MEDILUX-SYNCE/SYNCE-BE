@@ -5,7 +5,14 @@ const { verifyToken } = require('../middlewares/authMiddleware');
 
 /**
  * @swagger
- * /social-login:
+ * tags:
+ *   name: Auth
+ *   description: 인증 및 사용자 관리 API
+ */
+
+/**
+ * @swagger
+ * /auth/social-login:
  *   post:
  *     summary: 소셜 로그인
  *     tags:
@@ -64,7 +71,7 @@ router.post('/social-login', AuthController.socialLogin);
 
 /**
  * @swagger
- * /register:
+ * /auth/register:
  *   post:
  *     summary: 회원 추가 정보 및 동의 등록
  *     tags:
@@ -123,7 +130,7 @@ router.post('/register', verifyToken, AuthController.register);
 
 /**
  * @swagger
- * /refresh:
+ * /auth/refresh:
  *   post:
  *     summary: 리프레시 토큰으로 토큰 재발급
  *     tags:
@@ -166,7 +173,7 @@ router.post('/refresh', AuthController.refreshToken);
 
 /**
  * @swagger
- * /logout:
+ * /auth/logout:
  *   post:
  *     summary: 로그아웃 (토큰 무효화)
  *     tags:
@@ -183,7 +190,7 @@ router.post('/logout', verifyToken, AuthController.logout);
 
 /**
  * @swagger
- * /consents:
+ * /auth/consents:
  *   get:
  *     summary: 사용자 동의 항목 리스트 조회
  *     tags:
@@ -211,7 +218,7 @@ router.get('/consents', verifyToken, AuthController.getConsents);
 
 /**
  * @swagger
- * /login-history:
+ * /auth/login-history:
  *   get:
  *     summary: 로그인 이력 조회 (페이징 및 기간 필터 지원)
  *     tags:
