@@ -9,7 +9,7 @@ const options = {
       description: 'SYNCE 프로젝트의 RESTful API 문서입니다.',
     },
     servers: [
-      { url: 'https://synce.ngrok.app', description: 'ngrok 서버' },
+      { url: 'http://3.14.4.111:3000', description: 'EC2 서버' },
     ],
     components: {
       securitySchemes: {

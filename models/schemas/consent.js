@@ -33,7 +33,7 @@ class Consent extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.UserConsent, { foreignKey: 'consent_id', as: 'user_consetns'});
+    this.hasMany(models.UserConsent, { foreignKey: 'consent_id', as: 'user_consents'});
   }
 }
 module.exports = Consent;

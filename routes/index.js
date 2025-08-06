@@ -4,6 +4,6 @@ const router = express.Router();
 router.use('/record-books', require('./recordBooks'));
 router.use('/record-entries', require('./recordEntries'));
 
-router.use('/auth', require('./authRoutes'));
+router.use('/auth', require('./auth'));
 
 module.exports = router;
